@@ -1,0 +1,12 @@
+usbd_midi_if.c:36:17:MIDI_DataRx	24	static
+usbd_midi_if.c:48:6:sendMidiMessage	16	static
+usbd_midi_if.c:59:17:MIDI_DataTx	24	static
+usbd_midi_if.c:73:12:checkMidiMessage	16	static
+usbd_midi_if.c:91:6:mimuz_init	8	static
+usbd_midi_if.c:95:6:setHdlNoteOff	16	static
+usbd_midi_if.c:99:6:setHdlNoteOn	16	static
+usbd_midi_if.c:103:6:setHdlCtlChange	16	static
+usbd_midi_if.c:107:6:sendNoteOn	16	static
+usbd_midi_if.c:115:6:sendNoteOff	16	static
+usbd_midi_if.c:123:6:sendCtlChange	16	static
+usbd_midi_if.c:131:6:processMidiMessage	16	static

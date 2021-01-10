@@ -1,0 +1,4 @@
+queue32.c:15:6:b4arrq_init	16	static
+queue32.c:22:10:b4arrq_next	16	static
+queue32.c:26:10:b4arrq_push	24	static
+queue32.c:38:11:b4arrq_pop	32	static
