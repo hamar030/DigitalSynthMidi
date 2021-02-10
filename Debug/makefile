@@ -37,37 +37,37 @@ endif
 
 -include ../makefile.defs
 
-BUILD_ARTIFACT_NAME := usbmidi
+BUILD_ARTIFACT_NAME := DigitalSynthMidi
 BUILD_ARTIFACT_EXTENSION := elf
 BUILD_ARTIFACT_PREFIX := 
 BUILD_ARTIFACT := $(BUILD_ARTIFACT_PREFIX)$(BUILD_ARTIFACT_NAME).$(BUILD_ARTIFACT_EXTENSION)
 
 # Add inputs and outputs from these tool invocations to the build variables 
 EXECUTABLES += \
-usbmidi.elf \
+DigitalSynthMidi.elf \
 
 SIZE_OUTPUT += \
 default.size.stdout \
 
 OBJDUMP_LIST += \
-usbmidi.list \
+DigitalSynthMidi.list \
 
 OBJCOPY_HEX += \
-usbmidi.hex \
+DigitalSynthMidi.hex \
 
 OBJCOPY_BIN += \
-usbmidi.bin \
+DigitalSynthMidi.bin \
 
 
 # All Target
 all: main-build
 
 # Main-build Target
-main-build: usbmidi.elf secondary-outputs
+main-build: DigitalSynthMidi.elf secondary-outputs
 
 # Tool invocations
-usbmidi.elf: $(OBJS) $(USER_OBJS) /home/bimo/STM32CubeIDE/workspace/usbmidi/STM32F401CCUX_FLASH.ld
-	arm-none-eabi-gcc -o "usbmidi.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"/home/bimo/STM32CubeIDE/workspace/usbmidi/STM32F401CCUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="usbmidi.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
+DigitalSynthMidi.elf: $(OBJS) $(USER_OBJS) /home/bimo/Documents/Eclipse/DigitalSynthMidi/STM32F401CCUX_FLASH.ld
+	arm-none-eabi-gcc -o "DigitalSynthMidi.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"/home/bimo/Documents/Eclipse/DigitalSynthMidi/STM32F401CCUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="DigitalSynthMidi.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
@@ -76,18 +76,18 @@ default.size.stdout: $(EXECUTABLES)
 	@echo 'Finished building: $@'
 	@echo ' '
 
-usbmidi.list: $(EXECUTABLES)
-	arm-none-eabi-objdump -h -S $(EXECUTABLES) > "usbmidi.list"
+DigitalSynthMidi.list: $(EXECUTABLES)
+	arm-none-eabi-objdump -h -S $(EXECUTABLES) > "DigitalSynthMidi.list"
 	@echo 'Finished building: $@'
 	@echo ' '
 
-usbmidi.hex: $(EXECUTABLES)
-	arm-none-eabi-objcopy  -O ihex $(EXECUTABLES) "usbmidi.hex"
+DigitalSynthMidi.hex: $(EXECUTABLES)
+	arm-none-eabi-objcopy  -O ihex $(EXECUTABLES) "DigitalSynthMidi.hex"
 	@echo 'Finished building: $@'
 	@echo ' '
 
-usbmidi.bin: $(EXECUTABLES)
-	arm-none-eabi-objcopy  -O binary $(EXECUTABLES) "usbmidi.bin"
+DigitalSynthMidi.bin: $(EXECUTABLES)
+	arm-none-eabi-objcopy  -O binary $(EXECUTABLES) "DigitalSynthMidi.bin"
 	@echo 'Finished building: $@'
 	@echo ' '
 

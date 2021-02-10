@@ -61,7 +61,7 @@ __ALIGN_BEGIN uint8_t USBD_MIDI_CfgDesc[USB_MIDI_CONFIG_DESC_SIZ] __ALIGN_END =
                 //Standard Descriptor
                 0x09,        // bLength
                 0x02,        // bDescriptorType (Configuration)
-                0x0065,  // wTotalLength 101
+               0x65, 0x00,  // wTotalLength 101
                 0x02,        // bNumInterfaces 2
                 0x01,        // bConfigurationValue
                 0x00,        // iConfiguration (String Index)
@@ -84,12 +84,12 @@ __ALIGN_BEGIN uint8_t USBD_MIDI_CfgDesc[USB_MIDI_CONFIG_DESC_SIZ] __ALIGN_END =
                 0x09,        // bLength
                 0x24,        // bDescriptorType (See Next Line)
                 0x01,        // bDescriptorSubtype (CS_INTERFACE -> HEADER)
-                0x0100,  // bcdADC 1.00
-                0x0009,  // wTotalLength 9
+                0x00, 0x01,  // bcdADC 1.00
+                0x09, 0x00,  // wTotalLength 9
                 0x01,        // binCollection 0x01
                 0x01,        // baInterfaceNr 1
 
-                /** And from here on, things make sense. A bit */
+                /** And from here on, things make sense. A bit
                 //MIDI streaming interface
                 0x09,        // bLength
                 0x04,        // bDescriptorType (Interface)
@@ -105,8 +105,26 @@ __ALIGN_BEGIN uint8_t USBD_MIDI_CfgDesc[USB_MIDI_CONFIG_DESC_SIZ] __ALIGN_END =
                 0x07,        // bLength
                 0x24,        // bDescriptorType (See Next Line)
                 0x01,        // bDescriptorSubtype (CS_INTERFACE -> MS_HEADER)
-                0x0100,  // bcdMSC 1.00
-                0x0041,  // wTotalLength 41
+                0x00, 0x01,  // bcdMSC 1.00
+                0x41, 0x00,  // wTotalLength 41
+*/
+				// Standard MS Interface Descriptor (On Alternate Setting 0x01 for USB MIDI 2.0)
+                0x09,        // bLength
+                0x04,        // bDescriptorType (Interface)
+                0x01,        // bInterfaceNumber 1
+                0x01,        // bAlternateSetting
+                0x02,        // bNumEndpoints 2
+                0x01,        // bInterfaceClass (Audio)
+                0x03,        // bInterfaceSubClass (MIDI Streaming)
+                0x00,        // bInterfaceProtocol
+                USBD_IDX_INTERFACE_STR, // iInterface (String Index)
+
+                //MIDI Interface Header Descriptor
+                0x07,        // bLength
+                0x24,        // bDescriptorType (See Next Line)
+                0x01,        // bDescriptorSubtype (CS_INTERFACE -> MS_HEADER)
+                0x00, 0x02,  // bcdMSC 2.00
+                0x07, 0x00,  // wTotalLength 7
 
                 /** So, please note where MIDI jacks reference each other. This is way more strict than it seems,
                  * or Windows drivers will politely refuse to load without explanation.
@@ -154,7 +172,7 @@ __ALIGN_BEGIN uint8_t USBD_MIDI_CfgDesc[USB_MIDI_CONFIG_DESC_SIZ] __ALIGN_END =
                 0x05,        // bDescriptorType (See Next Line)
                 MIDI_OUT_EP, // bEndpointAddress (OUT/H2D)
                 0x02,        // bmAttributes (Bulk)
-                0x0040,  // wMaxPacketSize 64
+                0x40, 0x00,  // wMaxPacketSize 64
                 0x00,        // bInterval 0 (Ignored for bulk)
                 0x00,        // bRefresh
                 0x00,        // bSyncAddress
@@ -171,7 +189,7 @@ __ALIGN_BEGIN uint8_t USBD_MIDI_CfgDesc[USB_MIDI_CONFIG_DESC_SIZ] __ALIGN_END =
                 0x05,        // bDescriptorType (See Next Line)
                 MIDI_IN_EP,  // bEndpointAddress (OUT/H2D)
                 0x02,        // bmAttributes (Bulk)
-                0x0040,  // wMaxPacketSize 64
+                0x40, 0x00,  // wMaxPacketSize 64
                 0x00,        // bInterval  0 (Ignored for bulk)
                 0x00,        // bRefresh
                 0x00,        // bSyncAddress
@@ -182,25 +200,6 @@ __ALIGN_BEGIN uint8_t USBD_MIDI_CfgDesc[USB_MIDI_CONFIG_DESC_SIZ] __ALIGN_END =
                 0x01,        // bDescriptorSubtype (CS_ENDPOINT -> MS_GENERAL)
                 0x01,        // bNumEmbMIDIJack(1) (num of MIDI **OUT** Jacks)
                 MIDI_JACK_USB_IN, // BaAssocJackID(1) 1
-
-				// Standard MS Interface Descriptor (On Alternate Setting 0x01 for USB MIDI 2.0)
-                0x09,        // bLength
-                0x04,        // bDescriptorType (Interface)
-                0x01,        // bInterfaceNumber 1
-                0x01,        // bAlternateSetting
-                0x02,        // bNumEndpoints 2
-                0x01,        // bInterfaceClass (Audio)
-                0x03,        // bInterfaceSubClass (MIDI Streaming)
-                0x00,        // bInterfaceProtocol
-                USBD_IDX_INTERFACE_STR, // iInterface (String Index)
-
-                //MIDI Interface Header Descriptor
-                0x07,        // bLength
-                0x24,        // bDescriptorType (See Next Line)
-                0x01,        // bDescriptorSubtype (CS_INTERFACE -> MS_HEADER)
-                0x0200,  // bcdMSC 2.00
-                0x0007,  // wTotalLength 7
-
 
         };
 

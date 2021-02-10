@@ -52,14 +52,21 @@ extern "C" {
 
 /* Exported functions prototypes ---------------------------------------------*/
 void Error_Handler(void);
-
+void SendCDCData(char *data);
 /* USER CODE BEGIN EFP */
 
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
+#define UsrLed_Pin GPIO_PIN_13
+#define UsrLed_Port GPIOC
+#define UsrKey_Pin GPIO_PIN_0
+#define UsrKey_Port GPIOA
+#define SS595_Pin GPIO_PIN_1
+#define SS165_Pin GPIO_PIN_2
+#define SPISS_Port GPIOB
 /* USER CODE BEGIN Private defines */
-
+static int breathsw = 1;
 /* USER CODE END Private defines */
 
 #ifdef __cplusplus
