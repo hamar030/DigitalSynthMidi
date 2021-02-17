@@ -9,5 +9,6 @@
 #define INC_KEYBOARD_H_
 
 void StartKeyboardTask(void *argument);
+char* KeyboardDebug[];
 
 #endif /* INC_KEYBOARD_H_ */

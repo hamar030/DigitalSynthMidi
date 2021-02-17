@@ -2,11 +2,8 @@
   ******************************************************************************
   * @file           : usbd_midi_if.c
   * @brief          :
-  * from https://github.com/mimuz/mimuz-tuch/blob/master/STM32/source/mimuz-tuch/Src/usbd_midi_if.c
   ******************************************************************************
-
     (CC at)2016 by D.F.Mac. @TripArts Music
-
 */
 
 /* Includes ------------------------------------------------------------------*/
@@ -51,7 +48,7 @@ void sendMidiMessage(uint8_t *msg, uint16_t size){
 //	APP_Rx_Buffer[1] = msg[1];
 //	APP_Rx_Buffer[2] = msg[2];
 //	APP_Rx_Buffer[3] = msg[3];
-//    USBD_MIDI_SendData(&hUsbDeviceFS, APP_Rx_Buffer, size);
+//   USBD_MIDI_SendData(&hUsbDeviceFS, APP_Rx_Buffer, size);
     MIDI_DataTx(msg, size);
   }
 }
@@ -112,11 +109,11 @@ void sendNoteOn(uint8_t ch, uint8_t note, uint8_t vel){
   sendMidiMessage(buffer,4);
 }
 
-void sendNoteOff(uint8_t ch, uint8_t note){
+void sendNoteOff(uint8_t ch, uint8_t note, uint8_t vel){
   buffer[0] = 0x08;
   buffer[1] = 0x80 | ch;
   buffer[2] = 0x7f & note;
-  buffer[3] = 0;
+  buffer[3] = 0 & vel;
   sendMidiMessage(buffer,4);
 }
 

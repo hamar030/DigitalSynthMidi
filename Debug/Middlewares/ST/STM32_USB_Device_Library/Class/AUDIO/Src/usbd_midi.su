@@ -1,7 +1,0 @@
-usbd_midi.c:206:16:USBD_MIDI_Init	16	static
-usbd_midi.c:214:16:USBD_MIDI_DeInit	16	static
-usbd_midi.c:221:16:USBD_MIDI_DataIn	16	static
-usbd_midi.c:229:17:USBD_MIDI_DataOut	24	static
-usbd_midi.c:240:6:USBD_MIDI_SendPacket	16	static
-usbd_midi.c:276:17:USBD_MIDI_GetCfgDesc	16	static
-usbd_midi.c:281:9:USBD_MIDI_RegisterInterface	24	static

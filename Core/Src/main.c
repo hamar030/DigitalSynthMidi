@@ -103,7 +103,8 @@ int main(void) {
 	MX_RTC_Init();
 	MX_SPI2_Init();
 	MX_USART1_UART_Init();
-	if (HAL_GPIO_ReadPin(UsrKey_Port, UsrKey_Pin) == GPIO_PIN_RESET) {
+
+	if (HAL_GPIO_ReadPin(UsrKey_Port, UsrKey_Pin) == GPIO_PIN_SET) {
 		MX_USB_DEVICE_Init(1);
 	} else {
 		MX_USB_DEVICE_Init(0);
