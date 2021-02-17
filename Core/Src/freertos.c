@@ -49,6 +49,7 @@
 /* Private variables ---------------------------------------------------------*/
 /* USER CODE BEGIN Variables */
 
+
 /* USER CODE END Variables */
 /* Definitions for defaultTask */
 osThreadId_t defaultTaskHandle;
@@ -171,6 +172,8 @@ void StartDefaultTask(void *argument) {
 					HAL_GPIO_WritePin(UsrLed_Port, UsrLed_Pin, GPIO_PIN_SET);
 			}
 		}
+
+
 	}
 	/* USER CODE END StartDefaultTask */
 }
